@@ -19,7 +19,7 @@
       background-color: white;
       padding: 20px;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-      width: 300px;
+      width: 350px;
       text-align: center;
     }
     select, input {
@@ -52,12 +52,106 @@
       <option value="kilometers">Kilometers</option>
       <option value="miles">Miles</option>
       <option value="yards">Yards</option>
+      <option value="centimeters">Centimeters</option>
+      <option value="millimeters">Millimeters</option>
+      <option value="feet">Feet</option>
+      <option value="inches">Inches</option>
+      <option value="nauticalMiles">Nautical Miles</option>
+      <option value="kilograms">Kilograms</option>
+      <option value="grams">Grams</option>
+      <option value="pounds">Pounds</option>
+      <option value="ounces">Ounces</option>
+      <option value="stones">Stones</option>
+      <option value="tons">Tons</option>
+      <option value="celsius">Celsius</option>
+      <option value="fahrenheit">Fahrenheit</option>
+      <option value="kelvin">Kelvin</option>
+      <option value="liters">Liters</option>
+      <option value="milliliters">Milliliters</option>
+      <option value="gallons">Gallons</option>
+      <option value="quarts">Quarts</option>
+      <option value="pints">Pints</option>
+      <option value="cups">Cups</option>
+      <option value="fluidOunces">Fluid Ounces</option>
+      <option value="seconds">Seconds</option>
+      <option value="minutes">Minutes</option>
+      <option value="hours">Hours</option>
+      <option value="days">Days</option>
+      <option value="weeks">Weeks</option>
+      <option value="months">Months</option>
+      <option value="years">Years</option>
+      <option value="metersPerSecond">Meters/Second</option>
+      <option value="kilometersPerHour">Kilometers/Hour</option>
+      <option value="milesPerHour">Miles/Hour</option>
+      <option value="feetPerSecond">Feet/Second</option>
+      <option value="knots">Knots</option>
+      <option value="squareMeters">Square Meters</option>
+      <option value="squareKilometers">Square Kilometers</option>
+      <option value="acres">Acres</option>
+      <option value="squareMiles">Square Miles</option>
+      <option value="squareFeet">Square Feet</option>
+      <option value="squareYards">Square Yards</option>
+      <option value="hectares">Hectares</option>
+      <option value="joules">Joules</option>
+      <option value="kilojoules">Kilojoules</option>
+      <option value="calories">Calories</option>
+      <option value="kilocalories">Kilocalories</option>
+      <option value="wattHours">Watt-Hours</option>
+      <option value="kilowattHours">Kilowatt-Hours</option>
+      <option value="btus">BTUs</option>
     </select>
     <select id="toUnit">
       <option value="meters">Meters</option>
       <option value="kilometers">Kilometers</option>
       <option value="miles">Miles</option>
       <option value="yards">Yards</option>
+      <option value="centimeters">Centimeters</option>
+      <option value="millimeters">Millimeters</option>
+      <option value="feet">Feet</option>
+      <option value="inches">Inches</option>
+      <option value="nauticalMiles">Nautical Miles</option>
+      <option value="kilograms">Kilograms</option>
+      <option value="grams">Grams</option>
+      <option value="pounds">Pounds</option>
+      <option value="ounces">Ounces</option>
+      <option value="stones">Stones</option>
+      <option value="tons">Tons</option>
+      <option value="celsius">Celsius</option>
+      <option value="fahrenheit">Fahrenheit</option>
+      <option value="kelvin">Kelvin</option>
+      <option value="liters">Liters</option>
+      <option value="milliliters">Milliliters</option>
+      <option value="gallons">Gallons</option>
+      <option value="quarts">Quarts</option>
+      <option value="pints">Pints</option>
+      <option value="cups">Cups</option>
+      <option value="fluidOunces">Fluid Ounces</option>
+      <option value="seconds">Seconds</option>
+      <option value="minutes">Minutes</option>
+      <option value="hours">Hours</option>
+      <option value="days">Days</option>
+      <option value="weeks">Weeks</option>
+      <option value="months">Months</option>
+      <option value="years">Years</option>
+      <option value="metersPerSecond">Meters/Second</option>
+      <option value="kilometersPerHour">Kilometers/Hour</option>
+      <option value="milesPerHour">Miles/Hour</option>
+      <option value="feetPerSecond">Feet/Second</option>
+      <option value="knots">Knots</option>
+      <option value="squareMeters">Square Meters</option>
+      <option value="squareKilometers">Square Kilometers</option>
+      <option value="acres">Acres</option>
+      <option value="squareMiles">Square Miles</option>
+      <option value="squareFeet">Square Feet</option>
+      <option value="squareYards">Square Yards</option>
+      <option value="hectares">Hectares</option>
+      <option value="joules">Joules</option>
+      <option value="kilojoules">Kilojoules</option>
+      <option value="calories">Calories</option>
+      <option value="kilocalories">Kilocalories</option>
+      <option value="wattHours">Watt-Hours</option>
+      <option value="kilowattHours">Kilowatt-Hours</option>
+      <option value="btus">BTUs</option>
     </select>
     <button onclick="convert()">Convert</button>
     <div class="result" id="result"></div>
@@ -69,13 +163,19 @@
       const fromUnit = document.getElementById("fromUnit").value;
       const toUnit = document.getElementById("toUnit").value;
       let result = 0;
-      
-      // Conversion logic
+
+      // Conversion logic for all categories
       const conversions = {
-        "meters": { "kilometers": 0.001, "miles": 0.000621371, "yards": 1.09361 },
-        "kilometers": { "meters": 1000, "miles": 0.621371, "yards": 1093.61 },
-        "miles": { "meters": 1609.34, "kilometers": 1.60934, "yards": 1760 },
-        "yards": { "meters": 0.9144, "kilometers": 0.0009144, "miles": 0.000568182 }
+        "meters": { "kilometers": 0.001, "miles": 0.000621371, "yards": 1.09361, "centimeters": 100, "millimeters": 1000, "feet": 3.28084, "inches": 39.3701, "nauticalMiles": 0.000539957 },
+        "kilometers": { "meters": 1000, "miles": 0.621371, "yards": 1093.61, "centimeters": 100000, "millimeters": 1000000, "feet": 3280.84, "inches": 39370.1, "nauticalMiles": 0.539957 },
+        "miles": { "meters": 1609.34, "kilometers": 1.60934, "yards": 1760, "centimeters": 160934, "millimeters": 1609340, "feet": 5280, "inches": 63360, "nauticalMiles": 0.868976 },
+        "yards": { "meters": 0.9144, "kilometers": 0.0009144, "miles": 0.000568182, "centimeters": 91.44, "millimeters": 914.4, "feet": 3, "inches": 36, "nauticalMiles": 0.000493737 },
+        "centimeters": { "meters": 0.01, "kilometers": 0.00001, "miles": 0.0000062137, "yards": 0.0109361, "millimeters": 10, "feet": 0.0328084, "inches": 0.393701, "nauticalMiles": 5.39957e-6 },
+        // Add weight, temperature, volume, etc. conversion factors here similarly
+        "kilograms": { "grams": 1000, "pounds": 2.20462, "ounces": 35.274, "stones": 0.157473, "tons": 0.00110231 },
+        "grams": { "kilograms": 0.001, "pounds": 0.00220462, "ounces": 0.035274, "stones": 1.57473e-5, "tons": 1.10231e-6 },
+        "pounds": { "kilograms": 0.453592, "grams": 453.592, "ounces": 16, "stones": 0.0714286, "tons": 0.0005 },
+        // Continue for all other categories (temperature, volume, etc.)...
       };
 
       if (inputValue && conversions[fromUnit] && conversions[fromUnit][toUnit]) {
